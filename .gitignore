@@ -1,11 +1,19 @@
-.gradle
-build/
+# Gradle stuff
+!gradle/
+!gradlew
+!gradlew.bat
+!build.gradle
+!build.properties
+!settings.gradle
 
-# Ignore Gradle GUI config
-gradle-app.setting
+# Other Files.
+!LICENSE.txt
+!README.md
 
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
+# Include git important files
+!.gitmodules
+!.gitignore
 
-# Cache of project
-.gradletasknamecache
+# Include Important Folders
+!src/
+!libs/
