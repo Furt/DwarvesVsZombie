@@ -5,4 +5,4 @@
  * @author Furt
  *
  */
-package assets.dvz.textures.icons;
+package me.furt.dvz.skills;

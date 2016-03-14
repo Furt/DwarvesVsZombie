@@ -1,4 +1,4 @@
-package me.furt.dvz.item;
+package me.furt.dvz.items;
 
 import me.furt.dvz.creativetab.CreativeTab;
 import me.furt.dvz.references.Textures;

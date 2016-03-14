@@ -1,4 +1,4 @@
-package me.furt.dvz.item;
+package me.furt.dvz.items;
 
 import net.minecraft.item.ItemStack;
 import me.furt.dvz.references.Names;

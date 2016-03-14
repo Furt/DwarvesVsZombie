@@ -5,4 +5,4 @@
  * @author Earnheart
  *
  */
-package assets.dvz.models.item;
+package me.furt.dvz.skills.dwarves.passive;

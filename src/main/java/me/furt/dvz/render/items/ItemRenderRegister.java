@@ -1,7 +1,7 @@
 package me.furt.dvz.render.items;
 
 import me.furt.dvz.init.ModItems;
-import me.furt.dvz.item.ItemDVZPoster;
+import me.furt.dvz.items.ItemDVZPoster;
 import me.furt.dvz.references.Names;
 import me.furt.dvz.references.Textures;
 import net.minecraft.client.Minecraft;

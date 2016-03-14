@@ -8,6 +8,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class DvzRecipes {
 
 	public static void addRecipes() {
+		
+		// Just test recipes
 		GameRegistry.addRecipe(new ItemStack(Blocks.obsidian), "AAA", "AAA",
 				"AAA", 'A', Items.cookie);
 		GameRegistry.addRecipe(new ItemStack(Items.apple, 4), "AA", "AA", 'A',

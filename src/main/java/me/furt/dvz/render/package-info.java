@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author Earnheart
+ * @author Furt
  *
  */
 package me.furt.dvz.render;

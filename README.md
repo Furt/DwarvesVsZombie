@@ -1,2 +1,2 @@
 # DwarvesVsZombies
-A clone of the popular mini games but made into a forge mod
+A clone of the popular mini game but made into a forge mod
