@@ -5,4 +5,4 @@
  * @author Furt
  *
  */
-package me.furt.dvz.entity.dwarf;
+package me.furt.dvz.player;
