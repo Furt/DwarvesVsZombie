@@ -1,0 +1,19 @@
+[
+{
+  "modid": "dvz",
+  "name": "Dwarves vs Zombies",
+  "description": "Dwarves vs Zombies is one big giant role playing game. The idea is that the last remaining people of an ancient Dwarven civilization are preparing themselves for their destruction as hordes of monsters rain down on them to destroy their precious Dwarven Shrine. Unfortunately, there are few dwarves remaining to defend the shrine, and the monster hordes are endless. The dwarves must defend their shrine for as long as possible, fighting until the very last dwarf.",
+  "version": "${mod_version}",
+  "mcversion": "${minecraft_version}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Furt"],
+  "credits": "Buffalowizards",
+  "logoFile": "assets/dvz/textures/logo/logo.png",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]

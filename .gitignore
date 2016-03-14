@@ -1,19 +1,24 @@
-# Gradle stuff
-!gradle/
-!gradlew
-!gradlew.bat
-!build.gradle
-!build.properties
-!settings.gradle
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
 
-# Other Files.
-!LICENSE.txt
-!README.md
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
 
-# Include git important files
-!.gitmodules
-!.gitignore
+# gradle
+build
+.gradle
 
-# Include Important Folders
-!src/
-!libs/
+# other
+eclipse
+run
+*-changelog.txt
+*.launch

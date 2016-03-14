@@ -1,0 +1,139 @@
+
+// For those who want the bleeding edge
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
+    }
+}
+
+repositories {
+    maven {
+        name = "Covers1624 Repo"
+        url = "http://adel.podgeweb.com:1616/maven"
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'maven'
+
+dependencies {
+
+}
+
+ext.configFile = file "build.properties"
+
+configFile.withReader {
+    def prop = new Properties()
+    prop.load(it)
+    project.ext.config = new ConfigSlurper().parse prop
+}
+
+version = config.mod_version
+group = "me.furt.dvz" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "DwarvesVsZombies"
+
+minecraft {
+    version = config.minecraft_version + "-" + config.forge_version
+    // version = "1.8.9-11.15.1.1764"
+    runDir = "run"
+    mappings = config.mappings
+
+    replaceIn "reference/Reference.java"
+    replace "@MOD_VERSION@", "${config.mod_version}.${System.getenv("BUILD_NUMBER") ?: 0}"
+    if (project.hasProperty("dvz_sha1_signature")) {
+        replace "@FINGERPRINT@", project.dvz_sha1_signature
+    } 
+}
+
+version = "${config.minecraft_version}-${config.mod_version}.${System.getenv("BUILD_NUMBER") ?: 0}"
+
+processResources
+{
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include '*.info'
+
+        // replace version and mcversion
+        expand 'mod_version': project.version, 'minecraft_version': project.config.minecraft_version
+    }
+
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude '**/*.info'
+    }
+}
+
+task devJar(type: Jar, dependsOn: 'classes') {
+    from(sourceSets.main.output) {
+        include '**'
+    }
+
+    extension = 'jar'
+    classifier = 'dev'
+}
+
+artifacts {
+    archives devJar
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            if (project.hasProperty("forgemaven_url")) {
+                logger.info('Publishing to files server')
+                repository(url: project.forgemaven_url) {
+                    authentication(userName: project.forgemaven_username, password: project.forgemaven_password)
+                }
+            }
+
+            pom {
+                groupId = project.group
+                version = project.version
+                artifactId = project.archivesBaseName
+            }
+
+            pom.project {
+                name project.archivesBaseName
+                packaging 'jar'
+                description 'Dwarves Vs Zombies'
+                url 'https://github.com/Furt/DwarvesVsZombies/'
+
+                scm {
+                    url 'https://github.com/Furt/DwarvesVsZombies/'
+                    connection 'scm:git:git://github.com/Furt/DwarvesVsZombies.git'
+                    developerConnection 'scm:git:git@github.com/Furt/DwarvesVsZombies.git'
+                }
+
+                issueManagement {
+                    system 'github'
+                    url 'https://github.com/Furt/DwarvesVsZombies/issues'
+                }
+
+                licenses {
+                    license {
+                        name 'GNU Lesser General Public License 3.0'
+                        url 'https://www.gnu.org/licenses/lgpl-3.0.txt'
+                        distribution 'repo'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'Furt'
+                        name 'Furt'
+                        roles {
+                            role 'developer'
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
